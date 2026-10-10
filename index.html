@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="pearl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SalonQ · 24/7 Unisex Salon — 10 Branches Across India</title>
+<style>
+/* ============================================================
+   THEMES  (5 total — 2 light/white, 3 dark/black)
+   ============================================================ */
+[data-theme="pearl"]{
+  --bg:
+    radial-gradient(1100px 600px at 8% -12%, #dfe6ff 0%, transparent 60%),
+    radial-gradient(900px 520px at 108% 6%, #fde4f2 0%, transparent 58%),
+    linear-gradient(180deg,#fcfcff 0%, #eef1fa 100%);
+  --surface: rgba(255,255,255,.82);
+  --surface-solid:#ffffff;
+  --surface-2:#f3f5fc;
+  --text:#14162a;
+  --muted:#6b7280;
+  --border:rgba(20,22,42,.11);
+  --primary:#6d28d9;
+  --accent:#ec4899;
+  --on-primary:#ffffff;
+  --ok:#059669; --warn:#d97706; --danger:#dc2626; --info:#0284c7;
+  --shadow:0 14px 36px rgba(40,25,90,.10);
+  --shadow-sm:0 4px 14px rgba(40,25,90,.07);
+}
+[data-theme="blush"]{
+  --bg:
+    radial-gradient(950px 560px at 2% -6%, #ffe1e6 0%, transparent 58%),
+    radial-gradient(900px 600px at 102% 14%, #fff0c9 0%, transparent 58%),
+    linear-gradient(180deg,#fffaf9 0%, #ffeef1 100%);
+  --surface: rgba(255,255,255,.84);
+  --surface-solid:#ffffff;
+  --surface-2:#fff2f4;
+  --text:#2a1218;
+  --muted:#8b6b73;
+  --border:rgba(42,18,24,.11);
+  --primary:#e11d48;
+  --accent:#f59e0b;
+  --on-primary:#ffffff;
+  --ok:#059669; --warn:#d97706; --danger:#dc2626; --info:#0284c7;
+  --shadow:0 14px 36px rgba(160,40,70,.13);
+  --shadow-sm:0 4px 14px rgba(160,40,70,.09);
+}
+[data-theme="midnight"]{
+  --bg:
+    radial-gradient(1000px 520px at 0% -6%, #2a1f63 0%, transparent 55%),
+    radial-gradient(900px 560px at 104% 106%, #5b1e7a 0%, transparent 52%),
+    linear-gradient(180deg,#07060d 0%, #0d0b16 100%);
+  --surface: rgba(25,23,38,.78);
+  --surface-solid:#16141f;
+  --surface-2:#1f1c2c;
+  --text:#f5f3ff;
+  --muted:#a09fba;
+  --border:rgba(255,255,255,.11);
+  --primary:#a78bfa;
+  --accent:#f472b6;
+  --on-primary:#0d0a18;
+  --ok:#34d399; --warn:#fbbf24; --danger:#f87171; --info:#38bdf8;
+  --shadow:0 18px 44px rgba(0,0,0,.60);
+  --shadow-sm:0 6px 18px rgba(0,0,0,.45);
+}
+[data-theme="ocean"]{
+  --bg:
+    radial-gradient(1000px 560px at 6% -10%, #0e7490 0%, transparent 55%),
+    radial-gradient(900px 600px at 106% 108%, #047857 0%, transparent 52%),
+    linear-gradient(180deg,#03141b 0%, #062029 100%);
+  --surface: rgba(9,38,48,.76);
+  --surface-solid:#0a2a34;
+  --surface-2:#0e3540;
+  --text:#e7fbff;
+  --muted:#8db7c3;
+  --border:rgba(255,255,255,.11);
+  --primary:#22d3ee;
+  --accent:#34d399;
+  --on-primary:#04222a;
+  --ok:#34d399; --warn:#fbbf24; --danger:#fb7185; --info:#60a5fa;
+  --shadow:0 18px 44px rgba(0,20,28,.60);
+  --shadow-sm:0 6px 18px rgba(0,20,28,.45);
+}
+[data-theme="ember"]{
+  --bg:
+    radial-gradient(950px 600px at -4% -8%, #9a3412 0%, transparent 52%),
+    radial-gradient(880px 600px at 106% 108%, #854d0e 0%, transparent 52%),
+    linear-gradient(180deg,#0c0704 0%, #170e05 100%);
+  --surface: rgba(38,26,15,.78);
+  --surface-solid:#1e1409;
+  --surface-2:#2a1c0d;
+  --text:#fff8ee;
+  --muted:#c4a888;
+  --border:rgba(255,255,255,.11);
+  --primary:#f59e0b;
+  --accent:#fb7185;
+  --on-primary:#1c1203;
+  --ok:#4ade80; --warn:#fbbf24; --danger:#f87171; --info:#38bdf8;
+  --shadow:0 18px 44px rgba(20,8,0,.62);
+  --shadow-sm:0 6px 18px rgba(20,8,0,.48);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,sans-serif;
+  background:var(--bg);background-attachment:fixed;color:var(--text);
+  min-height:100vh;line-height:1.5;
+  transition:background .55s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit;outline:none}
+button{cursor:pointer;border:none;background:none}
+a{color:var(--primary)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:20px}
+
+/* ============================================================
+   THEME SWITCHER — moved to BOTTOM-RIGHT so it never
+   overlaps the dashboard header / logout button.
+   ============================================================ */
+.theme-switch{
+  position:fixed;bottom:22px;right:22px;z-index:900;
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  padding:12px 10px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--border);
+  box-shadow:var(--shadow);backdrop-filter:blur(16px);
+}
+.ts-label{
+  font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);
+}
+.sw{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--c);border:2px solid var(--border);
+  transition:transform .2s,box-shadow .2s;position:relative;
+}
+.sw:hover{transform:scale(1.16)}
+.sw.active{box-shadow:0 0 0 3px var(--primary);transform:scale(1.12)}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.screen{display:none}
+.screen.active{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 90px}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.right{text-align:right}
+.center{text-align:center}
+
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:22px;box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.card+.card{margin-top:18px}
+.section-title{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border-radius:13px;font-weight:650;font-size:14px;
+  transition:transform .18s,box-shadow .18s,background .18s,opacity .18s;
+  border:1px solid transparent;white-space:nowrap;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--on-primary);box-shadow:0 10px 24px -8px var(--primary);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px var(--primary)}
+.btn-outline{background:var(--surface-2);border-color:var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--primary)}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--text)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-ok{background:var(--ok);color:#fff}
+.btn.sm{padding:7px 13px;font-size:12.5px;border-radius:10px}
+.btn.block{width:100%}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form{display:flex;flex-direction:column;gap:15px}
+.form label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:600;color:var(--muted)}
+.form input,.form select,.form textarea{
+  background:var(--surface-2);border:1px solid var(--border);
+  border-radius:12px;padding:12px 14px;font-size:14.5px;color:var(--text);
+  transition:border-color .2s,box-shadow .2s;width:100%;
+}
+.form input:focus,.form select:focus,.form textarea:focus{
+  border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 22%,transparent);
+}
+.form textarea{resize:vertical;font-family:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ============================================================
+   LANDING
+   ============================================================ */
+.landing{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 22px 90px}
+.hero{text-align:center;max-width:820px;margin:0 auto 46px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  padding:8px 16px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--border);color:var(--muted);margin-bottom:22px;
+  box-shadow:var(--shadow-sm);letter-spacing:.02em;
+}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:pulse 1.9s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 70%,transparent)}70%{box-shadow:0 0 0 11px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(44px,8vw,82px);font-weight:850;letter-spacing:-.04em;line-height:1}
+.hero h1 span{background:linear-gradient(100deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:600px;margin:18px auto 0;font-size:16.5px;color:var(--muted)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:26px}
+.chip{
+  font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--border);color:var(--muted);
+}
+.login-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto;width:100%}
+.login-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:24px;
+  padding:30px 26px;box-shadow:var(--shadow);backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.login-card::before{
+  content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--primary) 12%,transparent),transparent 60%);
+}
+.login-card:hover{transform:translateY(-6px);box-shadow:0 26px 54px -18px var(--primary)}
+.login-card:hover::before{opacity:1}
+.login-card>*{position:relative;z-index:1}
+.lc-icon{
+  width:56px;height:56px;border-radius:17px;display:grid;place-items:center;font-size:26px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+}
+.login-card h3{font-size:20px;font-weight:750;letter-spacing:-.02em}
+.login-card p{font-size:13.5px;color:var(--muted);flex:1}
+.login-card .btn{width:100%}
+
+/* ============================================================
+   AUTH SCREENS
+   ============================================================ */
+.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:80px 20px 60px}
+.auth-box{width:100%;max-width:430px}
+.auth-icon{
+  width:60px;height:60px;border-radius:19px;display:grid;place-items:center;
+  font-size:28px;margin-bottom:18px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+}
+.auth-box h2{font-size:27px;font-weight:800;letter-spacing:-.03em}
+.auth-box .sub{color:var(--muted);font-size:14px;margin-top:6px;margin-bottom:24px}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:600}
+.back-link:hover{color:var(--primary)}
+.hint{
+  font-size:12.5px;color:var(--muted);background:var(--surface-2);
+  border:1px dashed var(--border);border-radius:12px;padding:11px 14px;
+}
+.hint b{color:var(--text)}
+
+/* ============================================================
+   BRANCH GRID  (NEW)
+   ============================================================ */
+.branch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.branch-card{
+  background:var(--surface);border:2px solid var(--border);border-radius:18px;
+  padding:18px;text-align:left;transition:.22s;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:8px;cursor:pointer;position:relative;
+}
+.branch-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 22px 44px -20px var(--primary)}
+.branch-card.selected{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 9%,var(--surface))}
+.branch-city{
+  font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:6px;
+}
+.branch-name{font-size:15.5px;font-weight:750;letter-spacing:-.01em}
+.branch-addr{font-size:12.5px;color:var(--muted);line-height:1.5}
+.branch-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.branch-chip{
+  font-size:10.5px;padding:4px 9px;border-radius:999px;
+  background:var(--surface-2);border:1px solid var(--border);
+  color:var(--muted);font-weight:650;letter-spacing:.02em;
+}
+.branch-chip.open{
+  background:color-mix(in srgb,var(--ok) 15%,transparent);
+  color:var(--ok);border-color:transparent;font-weight:800;
+}
+.branch-flag{font-size:22px}
+
+/* branch bar in dashboards */
+.branch-bar{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:13px 16px;border-radius:15px;
+  background:var(--surface);border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);margin-bottom:18px;
+}
+.branch-bar .bb-icon{
+  width:36px;height:36px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--on-primary);font-size:17px;flex-shrink:0;
+}
+.branch-bar .bb-body{flex:1;min-width:0}
+.branch-bar .bb-name{font-weight:720;font-size:14.5px}
+.branch-bar .bb-sub{font-size:12px;color:var(--muted);margin-top:1px}
+
+/* ============================================================
+   GENDER PICKER
+   ============================================================ */
+.gender-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.gender-card{
+  background:var(--surface);border:2px solid var(--border);border-radius:22px;
+  padding:28px 16px;text-align:center;transition:.22s;box-shadow:var(--shadow-sm);
+}
+.gender-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 20px 40px -18px var(--primary)}
+.gender-card .g-emoji{font-size:40px;display:block;margin-bottom:12px}
+.gender-card .g-name{font-weight:700;font-size:15.5px}
+.gender-card .g-desc{font-size:12px;color:var(--muted);margin-top:5px}
+
+/* ============================================================
+   SERVICE GRID
+   ============================================================ */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.svc-card{
+  background:var(--surface);border:2px solid var(--border);border-radius:20px;
+  padding:20px;text-align:left;transition:.22s;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:9px;position:relative;overflow:hidden;
+}
+.svc-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 22px 44px -20px var(--primary)}
+.svc-card.selected{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 9%,var(--surface))}
+.svc-emoji{font-size:30px}
+.svc-name{font-weight:720;font-size:15.5px;letter-spacing:-.01em}
+.svc-desc{font-size:12.5px;color:var(--muted);flex:1}
+.svc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.svc-price{font-weight:800;font-size:17px;color:var(--primary)}
+.svc-dur{font-size:11.5px;color:var(--muted);background:var(--surface-2);padding:4px 10px;border-radius:999px;border:1px solid var(--border)}
+.tag-women{
+  position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;
+  background:var(--accent);color:#fff;
+}
+
+/* ============================================================
+   TIME SLOTS
+   ============================================================ */
+.slot-group{margin-bottom:22px}
+.slot-group h4{font-size:13px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.slot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:9px}
+.slot{
+  padding:10px 6px;border-radius:12px;font-size:13px;font-weight:650;
+  background:var(--surface-2);border:1.5px solid var(--border);transition:.18s;
+}
+.slot:hover:not(:disabled){border-color:var(--primary);transform:translateY(-2px)}
+.slot.selected{background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--on-primary);border-color:transparent}
+.slot:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+
+/* ============================================================
+   CONFIRM / SUMMARY
+   ============================================================ */
+.summary-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.summary-row{display:flex;justify-content:space-between;gap:14px;padding:14px 16px;background:var(--surface-solid);font-size:14px}
+.summary-row span:first-child{color:var(--muted)}
+.summary-row span:last-child{font-weight:650;text-align:right}
+.total-row{background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--on-primary)}
+.total-row span{color:inherit!important;font-weight:800!important;font-size:17px}
+
+/* ============================================================
+   DASHBOARD SHELL
+   ============================================================ */
+.dash-top{
+  position:sticky;top:0;z-index:80;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 22px;background:var(--surface);border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.brand-sm{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand-mark{
+  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:17px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--on-primary);
+}
+.dash-actions{display:flex;align-items:center;gap:12px}
+.role-chip{
+  font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;background:var(--surface-2);
+  border:1px solid var(--border);color:var(--muted);
+}
+.avatar{
+  width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  font-weight:800;font-size:14px;background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--on-primary);
+}
+.branch-sel{
+  background:var(--surface-2);border:1px solid var(--border);border-radius:11px;
+  padding:8px 12px;font-size:13px;font-weight:650;color:var(--text);
+  cursor:pointer;max-width:230px;
+}
+
+/* customer dashboard */
+.cust-wrap{max-width:1000px;margin:0 auto;padding:26px 20px 90px}
+.hero-token{
+  border-radius:24px;padding:28px;color:var(--on-primary);
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  box-shadow:0 24px 50px -20px var(--primary);position:relative;overflow:hidden;
+}
+.hero-token::after{
+  content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;
+  border-radius:50%;background:rgba(255,255,255,.14);
+}
+.hero-token .ht-label{font-size:12px;font-weight:750;letter-spacing:.11em;text-transform:uppercase;opacity:.85}
+.hero-token .ht-token{font-size:58px;font-weight:850;letter-spacing:-.04em;line-height:1.05;margin:6px 0 4px}
+.hero-token .ht-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:18px;position:relative;z-index:1}
+.ht-meta-item .k{font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.ht-meta-item .v{font-size:16px;font-weight:750;margin-top:2px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+.stat{
+  background:var(--surface);border:1px solid var(--border);border-radius:18px;
+  padding:18px;box-shadow:var(--shadow-sm);
+}
+.stat .s-label{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.stat .s-value{font-size:27px;font-weight:820;letter-spacing:-.03em;margin-top:6px}
+.stat .s-sub{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* appointment cards */
+.appt-list{display:flex;flex-direction:column;gap:12px}
+.appt-item{
+  display:flex;align-items:center;gap:16px;padding:16px 18px;
+  background:var(--surface);border:1px solid var(--border);border-radius:17px;
+  box-shadow:var(--shadow-sm);transition:.2s;
+}
+.appt-item:hover{transform:translateX(4px);border-color:var(--primary)}
+.appt-emoji{
+  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  font-size:21px;background:var(--surface-2);border:1px solid var(--border);flex-shrink:0;font-weight:800;
+}
+.appt-body{flex:1;min-width:0}
+.appt-body .t{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.appt-body .m{font-size:12.5px;color:var(--muted);margin-top:2px}
+.appt-side{text-align:right;flex-shrink:0}
+.appt-price{font-weight:800;font-size:16px;color:var(--primary)}
+
+/* status pills */
+.pill{
+  display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;
+  letter-spacing:.05em;text-transform:uppercase;padding:5px 11px;border-radius:999px;
+}
+.pill.waiting{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.pill.serving{background:color-mix(in srgb,var(--info) 18%,transparent);color:var(--info)}
+.pill.completed{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.pill.cancelled{background:color-mix(in srgb,var(--danger) 18%,transparent);color:var(--danger)}
+.pill.open{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.pill.resolved{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+
+/* ============================================================
+   ADMIN LAYOUT
+   ============================================================ */
+.dash-layout{display:grid;grid-template-columns:230px 1fr;gap:22px;max-width:1380px;margin:0 auto;padding:24px 20px 90px}
+.side{
+  display:flex;flex-direction:column;gap:6px;position:sticky;top:88px;align-self:start;
+}
+.side-btn{
+  display:flex;align-items:center;gap:11px;padding:12px 15px;border-radius:13px;
+  font-size:14px;font-weight:650;color:var(--muted);text-align:left;transition:.18s;
+  border:1px solid transparent;
+}
+.side-btn:hover{background:var(--surface-2);color:var(--text)}
+.side-btn.active{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--on-primary);box-shadow:0 10px 22px -10px var(--primary);
+}
+.tabpane{display:none}
+.tabpane.active{display:block;animation:fadeUp .3s ease}
+
+/* tables */
+.table-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
+thead{background:var(--surface-2)}
+th{
+  text-align:left;padding:13px 15px;font-size:11.5px;font-weight:800;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--muted);white-space:nowrap;
+}
+td{padding:13px 15px;border-top:1px solid var(--border);vertical-align:middle}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:var(--surface-2)}
+.cell-name{font-weight:680}
+.cell-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+
+/* mini list */
+.mini-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}
+.mini-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:16px;box-shadow:var(--shadow-sm);display:flex;gap:13px;align-items:flex-start;
+}
+.mini-avatar{
+  width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
+  font-weight:800;font-size:15px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--on-primary);
+}
+.mini-body{flex:1;min-width:0}
+.mini-body .n{font-weight:700;font-size:14.5px}
+.mini-body .d{font-size:12px;color:var(--muted);margin-top:2px}
+.mini-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:18px}
+.inline{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:650;color:var(--muted)}
+.inline input,.inline select{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 13px;font-size:13.5px}
+.spacer{flex:1}
+
+/* queue big */
+.queue-big{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.queue-token{
+  font-size:52px;font-weight:850;letter-spacing:-.04em;line-height:1;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,140%);
+  padding:14px 24px;border-radius:14px;font-size:14px;font-weight:650;
+  background:var(--surface-solid);color:var(--text);border:1px solid var(--border);
+  box-shadow:var(--shadow);z-index:1000;transition:transform .35s cubic-bezier(.2,1.3,.4,1);
+  max-width:90vw;text-align:center;
+}
+.toast.show{transform:translate(-50%,0)}
+.toast.ok{border-color:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 22%,transparent),var(--shadow)}
+.toast.err{border-color:var(--danger);box-shadow:0 0 0 3px color-mix(in srgb,var(--danger) 22%,transparent),var(--shadow)}
+
+/* empty */
+.empty{text-align:center;padding:38px 18px;color:var(--muted)}
+.empty .e-emoji{font-size:38px;display:block;margin-bottom:10px;opacity:.7}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+  .dash-layout{grid-template-columns:1fr}
+  .side{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}
+  .side-btn{white-space:nowrap}
+  .branch-sel{max-width:160px;font-size:12px}
+}
+@media(max-width:720px){
+  .login-cards{grid-template-columns:1fr}
+  .gender-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .theme-switch{bottom:14px;right:14px;padding:9px 8px;gap:7px}
+  .ts-label{display:none}
+  .sw{width:19px;height:19px}
+  .dash-top{padding:12px 14px;gap:10px}
+  .wrap,.cust-wrap,.dash-layout{padding-left:14px;padding-right:14px}
+  .appt-item{flex-wrap:wrap}
+  .appt-side{text-align:left;width:100%}
+  .branch-sel{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= THEME SWITCHER (bottom-right, never overlaps header) ================= -->
+<div class="theme-switch" id="themeSwitch">
+  <span class="ts-label">Theme</span>
+  <button class="sw" data-t="pearl"    style="--c:#ffffff" title="Pearl White (light)"></button>
+  <button class="sw" data-t="blush"    style="--c:#fb7185" title="Blush Rose (light)"></button>
+  <button class="sw" data-t="midnight" style="--c:#12101c" title="Midnight Black (dark)"></button>
+  <button class="sw" data-t="ocean"    style="--c:#0e7490" title="Ocean Deep (dark)"></button>
+  <button class="sw" data-t="ember"    style="--c:#f59e0b" title="Ember Gold (dark)"></button>
+</div>
+
+<main id="app">
+
+<!-- ============================================================
+     SCREEN 1 · LANDING
+     ============================================================ -->
+<section class="screen active" id="s-landing">
+  <div class="landing">
+    <div class="hero">
+      <div class="badge"><span class="dot"></span> 10 Branches · Open 24 / 7 · Unisex</div>
+      <h1>Salon<span>Q</span></h1>
+      <p>Book your chair, skip the queue. Hair, skin, nails, spa &amp; bridal — for everyone, at any hour, across India.</p>
+      <div class="hero-chips">
+        <span class="chip">✂️ Haircut</span>
+        <span class="chip">🪒 Shaving</span>
+        <span class="chip">💆 Massage</span>
+        <span class="chip">🧖 Facial</span>
+        <span class="chip">💄 Makeup</span>
+        <span class="chip">👁️ Eyebrow</span>
+        <span class="chip">💅 Nails</span>
+        <span class="chip">🦶 Pedicure</span>
+        <span class="chip">🌿 De-Tan</span>
+      </div>
+    </div>
+
+    <div class="login-cards">
+      <article class="login-card">
+        <div class="lc-icon">🙋</div>
+        <h3>Customer Login</h3>
+        <p>Pick a branch, book a service and track your live queue position in real time.</p>
+        <button class="btn btn-primary" data-go="s-customer-auth">Continue as Customer →</button>
+      </article>
+
+      <article class="login-card">
+        <div class="lc-icon">🛠️</div>
+        <h3>Admin / Staff Login</h3>
+        <p>Manage appointments, customers, workers, services and requests across all 10 branches.</p>
+        <button class="btn btn-outline" data-go="s-admin-auth">Staff Portal →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 2 · CUSTOMER LOGIN
+     ============================================================ -->
+<section class="screen" id="s-customer-auth">
+  <div class="auth-wrap">
+    <div class="auth-box">
+      <button class="back-link" data-go="s-landing">← Back to home</button>
+      <div class="card">
+        <div class="auth-icon">🙋</div>
+        <h2>Customer Login</h2>
+        <p class="sub">New here? Just enter your details — we'll create your account instantly.</p>
+
+        <form class="form" id="customerLoginForm">
+          <label>
+            Full name
+            <input type="text" id="cName" placeholder="e.g. Ananya Sharma" required maxlength="50" />
+          </label>
+          <label>
+            Mobile number
+            <input type="tel" id="cPhone" placeholder="10-digit mobile" required pattern="[0-9]{10}" maxlength="10" />
+          </label>
+          <button class="btn btn-primary block" type="submit">Continue →</button>
+        </form>
+        <p class="hint" style="margin-top:16px">🔒 Existing number? We'll log you straight back into your account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 3 · BRANCH SELECTION  (NEW)
+     ============================================================ -->
+<section class="screen" id="s-branch">
+  <div class="wrap">
+    <div class="toolbar">
+      <button class="btn btn-ghost sm" data-go="s-landing">← Back</button>
+      <div class="spacer"></div>
+      <span class="muted small" id="branchGreeting"></span>
+      <button class="btn btn-ghost sm" id="custLogoutB1">Logout</button>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <h2 style="font-size:26px;letter-spacing:-.03em">Choose your branch</h2>
+      <p class="muted small" style="margin-top:6px">
+        🇮🇳 10 locations across India · <b>All branches open 24/7</b> · Same service menu everywhere
+      </p>
+    </div>
+
+    <div class="branch-grid" id="branchGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 4 · GENDER
+     ============================================================ -->
+<section class="screen" id="s-gender">
+  <div class="auth-wrap">
+    <div class="auth-box" style="max-width:640px">
+      <div class="card">
+        <h2 style="font-size:24px">Who are we styling today?</h2>
+        <p class="sub">This helps us show the right services and prices for you.</p>
+        <div class="gender-grid">
+          <button class="gender-card" data-gender="male">
+            <span class="g-emoji">👨</span>
+            <div class="g-name">Male</div>
+            <div class="g-desc">Hair, shave, skin &amp; spa</div>
+          </button>
+          <button class="gender-card" data-gender="female">
+            <span class="g-emoji">👩</span>
+            <div class="g-name">Female</div>
+            <div class="g-desc">All services + makeup &amp; bridal</div>
+          </button>
+          <button class="gender-card" data-gender="other">
+            <span class="g-emoji">🧑</span>
+            <div class="g-name">Prefer not to say</div>
+            <div class="g-desc">Show all unisex services</div>
+          </button>
+        </div>
+        <button class="btn btn-ghost sm" data-go="s-branch" style="margin-top:18px">← Change branch</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 5 · SERVICE SELECTION
+     ============================================================ -->
+<section class="screen" id="s-service">
+  <div class="wrap">
+    <div class="toolbar">
+      <button class="btn btn-ghost sm" data-go="s-gender">← Change gender</button>
+      <button class="btn btn-ghost sm" data-go="s-branch">🏢 Change branch</button>
+      <div class="spacer"></div>
+      <button class="btn btn-ghost sm" id="custLogout1">Logout</button>
+    </div>
+
+    <div class="branch-bar" id="serviceBranchBar"></div>
+
+    <div class="card" style="margin-bottom:18px">
+      <h2 style="font-size:24px;letter-spacing:-.03em">Choose your service</h2>
+      <p class="muted small" style="margin-top:6px">All prices are fixed &amp; transparent. Open 24/7 — no extra night charge.</p>
+    </div>
+
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 6 · DATE & TIME
+     ============================================================ -->
+<section class="screen" id="s-time">
+  <div class="wrap">
+    <div class="toolbar">
+      <button class="btn btn-ghost sm" data-go="s-service">← Change service</button>
+    </div>
+
+    <div class="branch-bar" id="timeBranchBar"></div>
+
+    <div class="card">
+      <h2 style="font-size:23px;letter-spacing:-.03em">Pick your slot</h2>
+      <p class="muted small" style="margin-top:6px">We're open <b>24 hours</b> — every slot below is available.</p>
+
+      <div style="margin:20px 0 22px">
+        <label class="inline" style="font-size:13px">
+          Appointment date
+          <input type="date" id="apptDate" />
+        </label>
+      </div>
+
+      <div id="slotArea"></div>
+
+      <button class="btn btn-primary block" id="toConfirm" style="margin-top:10px" disabled>
+        Continue to confirmation →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 7 · CONFIRM
+     ============================================================ -->
+<section class="screen" id="s-confirm">
+  <div class="wrap" style="max-width:620px">
+    <div class="toolbar">
+      <button class="btn btn-ghost sm" data-go="s-time">← Change slot</button>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:23px;letter-spacing:-.03em;margin-bottom:18px">Confirm your booking</h2>
+      <div class="summary-list" id="summaryList"></div>
+
+      <div style="margin:18px 0">
+        <label class="inline" style="display:block;font-size:13px;font-weight:650;color:var(--muted)">
+          Special request <span class="small">(optional — the salon will see this)</span>
+          <textarea id="reqNotes" rows="3" placeholder="e.g. Prefer a senior stylist, allergic to a product…"
+            style="width:100%;margin-top:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;resize:vertical;font-family:inherit"></textarea>
+        </label>
+      </div>
+
+      <button class="btn btn-primary block" id="confirmBooking">✅ Confirm &amp; Get Token</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 8 · CUSTOMER DASHBOARD
+     ============================================================ -->
+<section class="screen" id="s-cust-dash">
+  <header class="dash-top">
+    <div class="brand-sm">
+      <span class="brand-mark">✂</span> SalonQ
+      <span class="role-chip">Customer</span>
+    </div>
+    <div class="dash-actions">
+      <span class="muted small" id="custWho"></span>
+      <div class="avatar" id="custAvatar">A</div>
+      <button class="btn btn-ghost sm" id="custLogout2">Logout</button>
+    </div>
+  </header>
+
+  <div class="cust-wrap">
+    <div id="custActive"></div>
+
+    <div class="stat-grid" id="custStats" style="margin-top:18px"></div>
+
+    <div class="card" style="margin-top:20px">
+      <div class="section-title">📅 My appointments</div>
+      <div class="appt-list" id="custAppts"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📨 Raise a request</div>
+      <p class="muted small" style="margin-bottom:14px">Ask for a specific stylist, product, or anything else — the salon team will see it.</p>
+      <form class="form" id="requestForm">
+        <textarea id="requestText" rows="3" placeholder="e.g. Please assign a female beautician for my facial." required
+          style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;resize:vertical;font-family:inherit"></textarea>
+        <button class="btn btn-outline" type="submit" style="align-self:flex-start">Send request</button>
+      </form>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+      <button class="btn btn-primary" id="bookAnother">＋ Book another service</button>
+      <button class="btn btn-ghost" id="changeBranchBtn">🏢 Change branch</button>
+      <button class="btn btn-ghost" id="goLanding">🏠 Home</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 9 · ADMIN / STAFF LOGIN
+     ============================================================ -->
+<section class="screen" id="s-admin-auth">
+  <div class="auth-wrap">
+    <div class="auth-box">
+      <button class="back-link" data-go="s-landing">← Back to home</button>
+      <div class="card">
+        <div class="auth-icon">🛠️</div>
+        <h2>Staff Portal</h2>
+        <p class="sub">Admins and salon workers sign in here.</p>
+
+        <form class="form" id="adminLoginForm">
+          <label>
+            Your name
+            <input type="text" id="aName" placeholder="e.g. Ravi Kumar" required maxlength="50" />
+          </label>
+          <label>
+            Login as
+            <select id="aRole" required>
+              <option value="">Select role…</option>
+              <option value="admin">Admin (Owner / Manager)</option>
+              <option value="worker">Worker (Stylist / Beautician)</option>
+            </select>
+          </label>
+          <label>
+            Access code
+            <input type="password" id="aCode" placeholder="Enter access code" required />
+          </label>
+          <button class="btn btn-primary block" type="submit">Sign in →</button>
+        </form>
+
+        <p class="hint" style="margin-top:16px">
+          🔑 Demo access codes — <b>Admin:</b> ADMIN2024 &nbsp;·&nbsp; <b>Worker:</b> STAFF2024
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 10 · ADMIN DASHBOARD
+     ============================================================ -->
+<section class="screen" id="s-admin-dash">
+  <header class="dash-top">
+    <div class="brand-sm">
+      <span class="brand-mark">✂</span> SalonQ
+      <span class="role-chip" id="roleChip">ADMIN</span>
+    </div>
+    <div class="dash-actions">
+      <select class="branch-sel" id="adminBranchSel"></select>
+      <span class="muted small" id="adminWho"></span>
+      <div class="avatar" id="adminAvatar">R</div>
+      <button class="btn btn-ghost sm" id="adminLogout">Logout</button>
+    </div>
+  </header>
+
+  <div class="dash-layout">
+    <aside class="side">
+      <button class="side-btn active" data-tab="overview">📊 Overview</button>
+      <button class="side-btn" data-tab="appts">📅 Appointments</button>
+      <button class="side-btn" data-tab="customers">👥 Customers</button>
+      <button class="side-btn" data-tab="workers">🧑‍🔧 Workers</button>
+      <button class="side-btn" data-tab="services">💠 Services</button>
+      <button class="side-btn" data-tab="branches">🏢 Branches</button>
+      <button class="side-btn" data-tab="requests">📨 Requests</button>
+    </aside>
+
+    <div class="dash-main">
+
+      <!-- OVERVIEW -->
+      <div class="tabpane active" id="tab-overview">
+        <div class="toolbar">
+          <label class="inline">Date <input type="date" id="ovDate" /></label>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost sm" id="ovRefresh">↻ Refresh</button>
+        </div>
+        <div class="stat-grid" id="ovStats"></div>
+
+        <div class="card" style="margin-top:20px">
+          <div class="section-title">🔴 Live queue — now serving</div>
+          <div id="ovNowServing"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">⏳ Waiting list</div>
+          <div class="appt-list" id="ovWaiting"></div>
+        </div>
+      </div>
+
+      <!-- APPOINTMENTS -->
+      <div class="tabpane" id="tab-appts">
+        <div class="toolbar">
+          <label class="inline">Date <input type="date" id="apDate" /></label>
+          <label class="inline">
+            Status
+            <select id="apStatus">
+              <option value="all">All</option>
+              <option value="waiting">Waiting</option>
+              <option value="serving">Serving</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </label>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost sm" id="apRefresh">↻ Refresh</button>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th><th>Customer</th><th>Branch</th><th>Service</th><th>Time</th>
+                  <th>Worker</th><th>Status</th><th class="right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="apptRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOMERS -->
+      <div class="tabpane" id="tab-customers">
+        <div class="toolbar">
+          <input type="text" id="custSearch" placeholder="Search by name or phone…"
+            style="flex:1;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 15px;font-size:14px" />
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Customer</th><th>Gender</th><th>Visits</th><th>Total spend</th><th>Home branch</th><th>Last visit</th><th>Status</th></tr>
+              </thead>
+              <tbody id="custRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKERS -->
+      <div class="tabpane" id="tab-workers">
+        <div class="card" id="addWorkerCard">
+          <div class="section-title">➕ Appoint a new worker</div>
+          <form class="form" id="workerForm">
+            <div class="row">
+              <label>Full name <input type="text" id="wName" placeholder="e.g. Priya Menon" required maxlength="50" /></label>
+              <label>Phone <input type="tel" id="wPhone" placeholder="10-digit" required pattern="[0-9]{10}" maxlength="10" /></label>
+            </div>
+            <div class="row">
+              <label>
+                Designation
+                <select id="wRole" required>
+                  <option value="Stylist">Stylist</option>
+                  <option value="Senior Stylist">Senior Stylist</option>
+                  <option value="Barber">Barber</option>
+                  <option value="Beautician">Beautician</option>
+                  <option value="Nail Technician">Nail Technician</option>
+                  <option value="Massage Therapist">Massage Therapist</option>
+                  <option value="Makeup Artist">Makeup Artist</option>
+                  <option value="Manager">Manager</option>
+                </select>
+              </label>
+              <label>Speciality <select id="wSpec" required></select></label>
+            </div>
+            <label>
+              Assign to branch
+              <select id="wBranch" required></select>
+            </label>
+            <button class="btn btn-primary" type="submit" style="align-self:flex-start">＋ Appoint worker</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="section-title">🧑‍🔧 Salon team <span class="role-chip" id="workerCount">0</span></div>
+          <div class="mini-list" id="workerList"></div>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="tabpane" id="tab-services">
+        <div class="card">
+          <div class="section-title">➕ Add a service</div>
+          <form class="form" id="serviceForm">
+            <div class="row">
+              <label>Service name <input type="text" id="svcName" placeholder="e.g. Hair Spa" required maxlength="40" /></label>
+              <label>Price (₹) <input type="number" id="svcPrice" min="0" step="10" value="300" required /></label>
+            </div>
+            <div class="row">
+              <label>Duration (min) <input type="number" id="svcDuration" min="5" max="300" step="5" value="30" required /></label>
+              <label>
+                Available for
+                <select id="svcGender">
+                  <option value="all">Everyone (unisex)</option>
+                  <option value="male">Male only</option>
+                  <option value="female">Female only</option>
+                </select>
+              </label>
+            </div>
+            <button class="btn btn-primary" type="submit" style="align-self:flex-start">＋ Add service</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="section-title">💠 Service menu <span class="role-chip">available at all branches</span></div>
+          <div class="mini-list" id="serviceList"></div>
+        </div>
+      </div>
+
+      <!-- BRANCHES (NEW) -->
+      <div class="tabpane" id="tab-branches">
+        <div class="card">
+          <div class="section-title">🏢 All branches <span class="role-chip" id="branchCount">10</span></div>
+          <p class="muted small" style="margin-bottom:16px">All branches operate 24/7. Click a branch card to filter the dashboard.</p>
+          <div class="branch-grid" id="adminBranchGrid"></div>
+        </div>
+      </div>
+
+      <!-- REQUESTS -->
+      <div class="tabpane" id="tab-requests">
+        <div class="card">
+          <div class="section-title">📨 Customer requests <span class="role-chip" id="reqCount">0</span></div>
+          <div class="appt-list" id="requestList"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   MOCK DATABASE  —  mirrors the Mongoose collections exactly
+   Collections: users, workers, branches, services, appointments, requests
+   ============================================================ */
+const DB_KEY = 'salonq_db_v2';
+
+const SEED = {
+  /* -------- 10 BRANCHES ACROSS INDIA -------- */
+  branches: [
+    { _id:'br_mum', city:'Mumbai',       flag:'🌊', name:'SalonQ Bandra West',    address:'Linking Road, Bandra West, Mumbai 400050',        phone:'022-4000-1001', open:'24/7', active:true },
+    { _id:'br_del', city:'New Delhi',    flag:'🏛️', name:'SalonQ Connaught Place', address:'Block A, Inner Circle, Connaught Place, New Delhi 110001', phone:'011-4000-1002', open:'24/7', active:true },
+    { _id:'br_blr', city:'Bengaluru',    flag:'🌿', name:'SalonQ Indiranagar',    address:'100 Feet Road, Indiranagar, Bengaluru 560038',    phone:'080-4000-1003', open:'24/7', active:true },
+    { _id:'br_hyd', city:'Hyderabad',    flag:'💎', name:'SalonQ Jubilee Hills',  address:'Road No. 36, Jubilee Hills, Hyderabad 500033',    phone:'040-4000-1004', open:'24/7', active:true },
+    { _id:'br_che', city:'Chennai',      flag:'🌴', name:'SalonQ Anna Nagar',     address:'2nd Avenue, Anna Nagar, Chennai 600040',          phone:'044-4000-1005', open:'24/7', active:true },
+    { _id:'br_kol', city:'Kolkata',      flag:'🎭', name:'SalonQ Park Street',    address:'Park Street, Kolkata 700016',                     phone:'033-4000-1006', open:'24/7', active:true },
+    { _id:'br_pun', city:'Pune',         flag:'🎓', name:'SalonQ Koregaon Park',  address:'North Main Road, Koregaon Park, Pune 411001',     phone:'020-4000-1007', open:'24/7', active:true },
+    { _id:'br_ahm', city:'Ahmedabad',    flag:'🪷', name:'SalonQ SG Highway',     address:'SG Highway, Bodakdev, Ahmedabad 380054',          phone:'079-4000-1008', open:'24/7', active:true },
+    { _id:'br_jai', city:'Jaipur',       flag:'🏰', name:'SalonQ MI Road',        address:'MI Road, Jaipur 302001',                          phone:'0141-400-1009', open:'24/7', active:true },
+    { _id:'br_koc', city:'Kochi',        flag:'⛵', name:'SalonQ Marine Drive',   address:'Marine Drive, Ernakulam, Kochi 682031',           phone:'0484-400-1010', open:'24/7', active:true }
+  ],
+
+  users: [],
+
+  /* -------- workers, each attached to a branch -------- */
+  workers: [
+    { _id:'w1', branchId:'br_mum', name:'Ravi Kumar',   phone:'9800000001', role:'Senior Stylist',    specialty:'haircut', active:true,  joined:Date.now() },
+    { _id:'w2', branchId:'br_mum', name:'Meera Nair',   phone:'9800000002', role:'Beautician',        specialty:'facial',  active:true,  joined:Date.now() },
+    { _id:'w3', branchId:'br_del', name:'Salim Sheikh', phone:'9800000003', role:'Barber',            specialty:'shaving', active:true,  joined:Date.now() },
+    { _id:'w4', branchId:'br_blr', name:'Priya Menon',  phone:'9800000004', role:'Makeup Artist',     specialty:'makeup',  active:true,  joined:Date.now() },
+    { _id:'w5', branchId:'br_hyd', name:'Arjun Das',    phone:'9800000005', role:'Massage Therapist', specialty:'massage', active:true,  joined:Date.now() },
+    { _id:'w6', branchId:'br_che', name:'Lakshmi Iyer', phone:'9800000006', role:'Nail Technician',   specialty:'nails',   active:true,  joined:Date.now() },
+    { _id:'w7', branchId:'br_kol', name:'Ananya Bose',  phone:'9800000007', role:'Beautician',        specialty:'facial',  active:true,  joined:Date.now() },
+    { _id:'w8', branchId:'br_pun', name:'Karan Patil',  phone:'9800000008', role:'Stylist',           specialty:'haircut', active:true,  joined:Date.now() },
+    { _id:'w9', branchId:'br_ahm', name:'Nisha Shah',   phone:'9800000009', role:'Makeup Artist',     specialty:'makeup',  active:true,  joined:Date.now() },
+    { _id:'w10',branchId:'br_jai', name:'Vikram Rathore',phone:'9800000010',role:'Barber',            specialty:'shaving', active:true,  joined:Date.now() },
+    { _id:'w11',branchId:'br_koc', name:'Devi Menon',   phone:'9800000011', role:'Massage Therapist', specialty:'massage', active:true,  joined:Date.now() }
+  ],
+
+  /* -------- services are GLOBAL (same menu at every branch) -------- */
+  services: [
+    { _id:'svc_haircut', key:'haircut',  name:'Haircut & Styling',   icon:'✂️', price:250,  duration:30, genders:['male','female','other'], desc:'Precision cut, wash & blow-dry' },
+    { _id:'svc_shaving', key:'shaving',  name:'Shaving & Beard',     icon:'🪒', price:150,  duration:20, genders:['male','other'],            desc:'Clean shave or beard sculpting' },
+    { _id:'svc_massage', key:'massage',  name:'Head & Body Massage', icon:'💆', price:600,  duration:45, genders:['male','female','other'], desc:'Relaxing oil & pressure massage' },
+    { _id:'svc_facial',  key:'facial',   name:'Facial & Clean-up',   icon:'🧖', price:800,  duration:45, genders:['male','female','other'], desc:'Deep cleanse + glow therapy' },
+    { _id:'svc_makeup',  key:'makeup',   name:'Makeup (Women)',      icon:'💄', price:1500, duration:60, genders:['female'],                  desc:'Party, engagement & bridal makeup' },
+    { _id:'svc_eyebrow', key:'eyebrow',  name:'Eyebrow Threading',   icon:'👁️', price:80,   duration:15, genders:['male','female','other'], desc:'Shape, arch & tidy' },
+    { _id:'svc_nails',   key:'nails',    name:'Manicure / Nails',    icon:'💅', price:450,  duration:40, genders:['male','female','other'], desc:'Cut, file, polish & nail art' },
+    { _id:'svc_pedicure',key:'pedicure', name:'Pedicure',            icon:'🦶', price:550,  duration:45, genders:['male','female','other'], desc:'Soak, scrub, massage & polish' },
+    { _id:'svc_detan',   key:'detan',    name:'De-Tan Therapy',      icon:'🌿', price:700,  duration:40, genders:['male','female','other'], desc:'Tan removal & brightening pack' }
+  ],
+
+  appointments: [],
+  requests: []
+};
+
+let db;
+function loadDB(){
+  try{
+    const raw = localStorage.getItem(DB_KEY);
+    db = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(SEED));
+  }catch(e){ db = JSON.parse(JSON.stringify(SEED)); }
+  // ensure all collections exist
+  ['users','workers','branches','services','appointments','requests'].forEach(k => {
+    if(!db[k]) db[k] = JSON.parse(JSON.stringify(SEED[k]));
+  });
+}
+function saveDB(){
+  try{ localStorage.setItem(DB_KEY, JSON.stringify(db)); }catch(e){}
+}
+function uid(prefix){ return prefix + '_' + Math.random().toString(36).slice(2,10); }
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $  = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+const todayISO = () => new Date().toISOString().slice(0,10);
+
+function money(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
+
+function fmtTime(hhmm){
+  const [h,m] = hhmm.split(':').map(Number);
+  const ampm = h < 12 ? 'AM' : 'PM';
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return h12 + ':' + String(m).padStart(2,'0') + ' ' + ampm;
+}
+
+function fmtDate(iso){
+  if(!iso) return '—';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-IN', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+}
+
+function timeAgo(ts){
+  const s = Math.floor((Date.now()-ts)/1000);
+  if(s < 60) return 'just now';
+  if(s < 3600) return Math.floor(s/60) + 'm ago';
+  if(s < 86400) return Math.floor(s/3600) + 'h ago';
+  return Math.floor(s/86400) + 'd ago';
+}
+
+function toast(msg, type='ok'){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.className = 'toast'; }, 2800);
+}
+
+function initials(name){
+  return (name||'?').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+}
+
+function labelGender(g){
+  return g === 'male' ? 'Male' : g === 'female' ? 'Female' : 'Unisex';
+}
+
+function getBranch(id){ return db.branches.find(b => b._id === id); }
+
+/* ============================================================
+   APP STATE
+   ============================================================ */
+const state = {
+  user: null,          // logged-in customer
+  branch: null,        // selected branch _id
+  gender: null,
+  service: null,
+  date: todayISO(),
+  time: null,
+  staff: null,         // { name, role }
+  adminBranch: 'all'   // 'all' or branch _id
+};
+
+/* ============================================================
+   THEME
+   ============================================================ */
+const THEME_KEY = 'salonq_theme';
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem(THEME_KEY, t);
+  $$('.sw').forEach(b => b.classList.toggle('active', b.dataset.t === t));
+}
+$$('.sw').forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.t)));
+setTheme(localStorage.getItem(THEME_KEY) || 'pearl');
+
+/* ============================================================
+   ROUTER
+   ============================================================ */
+function go(id){
+  $$('.screen').forEach(s => s.classList.toggle('active', s.id === id));
+  window.scrollTo({ top:0, behavior:'smooth' });
+
+  if(id === 's-branch')      renderBranches();
+  if(id === 's-service')     renderServices();
+  if(id === 's-time')        renderSlots();
+  if(id === 's-confirm')     renderConfirm();
+  if(id === 's-cust-dash')   renderCustomerDash();
+  if(id === 's-admin-dash')  renderAdminAll();
+}
+
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-go]');
+  if(el) go(el.dataset.go);
+});
+
+/* ============================================================
+   CUSTOMER LOGIN
+   ============================================================ */
+$('#customerLoginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name  = $('#cName').value.trim();
+  const phone = $('#cPhone').value.trim();
+
+  if(name.length < 2) return toast('Please enter a valid name', 'err');
+  if(!/^[0-9]{10}$/.test(phone)) return toast('Enter a valid 10-digit mobile number', 'err');
+
+  let user = db.users.find(u => u.phone === phone);
+  if(user){
+    user.name = name;
+    toast('Welcome back, ' + user.name.split(' ')[0] + '!');
+  }else{
+    user = { _id: uid('usr'), name, phone, gender:null, createdAt: Date.now() };
+    db.users.push(user);
+    toast('Account created — welcome to SalonQ!');
+  }
+  saveDB();
+  state.user = user;
+
+  // If gender already known, still ask branch first. Then skip gender.
+  go('s-branch');
+});
+
+/* ============================================================
+   BRANCH SELECTION  (NEW)
+   ============================================================ */
+function renderBranches(){
+  const grid = $('#branchGrid');
+  $('#branchGreeting').textContent = state.user
+    ? `Hi ${state.user.name.split(' ')[0]} — where would you like to visit?`
+    : '';
+
+  grid.innerHTML = '';
+  db.branches.forEach(br => {
+    const btn = document.createElement('button');
+    btn.className = 'branch-card' + (state.branch === br._id ? ' selected' : '');
+    btn.innerHTML = `
+      <span class="branch-city"><span class="branch-flag">${br.flag}</span> ${br.city}</span>
+      <span class="branch-name">${br.name}</span>
+      <span class="branch-addr">📍 ${br.address}</span>
+      <span class="branch-addr">📞 ${br.phone}</span>
+      <span class="branch-meta">
+        <span class="branch-chip open">● Open 24/7</span>
+        <span class="branch-chip">${db.workers.filter(w=>w.branchId===br._id).length} staff</span>
+      </span>`;
+    btn.addEventListener('click', () => {
+      state.branch = br._id;
+      // remember last-used branch on the user
+      if(state.user){ state.user.lastBranch = br._id; saveDB(); }
+      toast('Branch set: ' + br.name);
+      // skip gender if already known
+      if(state.user.gender){
+        state.gender = state.user.gender;
+        go('s-service');
+      }else{
+        go('s-gender');
+      }
+    });
+    grid.appendChild(btn);
+  });
+}
+
+/* ============================================================
+   GENDER
+   ============================================================ */
+$$('.gender-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const g = card.dataset.gender;
+    state.gender = g;
+    if(state.user){
+      state.user.gender = g;
+      saveDB();
+    }
+    go('s-service');
+  });
+});
+
+/* ============================================================
+   SERVICE SELECTION
+   ============================================================ */
+function branchBarHTML(branchId){
+  const br = getBranch(branchId);
+  if(!br) return '';
+  return `
+    <div class="bb-icon">${br.flag}</div>
+    <div class="bb-body">
+      <div class="bb-name">${br.name}</div>
+      <div class="bb-sub">${br.city} · 📞 ${br.phone} · <span style="color:var(--ok);font-weight:700">Open 24/7</span></div>
+    </div>`;
+}
+
+function renderServices(){
+  const grid = $('#svcGrid');
+  grid.innerHTML = '';
+
+  const list = db.services.filter(s => s.genders.includes(state.gender || 'other'));
+
+  const bar = $('#serviceBranchBar');
+  bar.innerHTML = branchBarHTML(state.branch);
+
+  if(!list.length){
+    grid.innerHTML = '<div class="empty"><span class="e-emoji">🗂️</span>No services available right now.</div>';
+    return;
+  }
+
+  list.forEach(svc => {
+    const btn = document.createElement('button');
+    btn.className = 'svc-card' + (state.service && state.service._id === svc._id ? ' selected' : '');
+    btn.innerHTML = `
+      ${svc.genders.length === 1 && svc.genders[0] === 'female' ? '<span class="tag-women">Women</span>' : ''}
+      <span class="svc-emoji">${svc.icon}</span>
+      <span class="svc-name">${svc.name}</span>
+      <span class="svc-desc">${svc.desc}</span>
+      <span class="svc-foot">
+        <span class="svc-price">${money(svc.price)}</span>
+        <span class="svc-dur">${svc.duration} min</span>
+      </span>`;
+    btn.addEventListener('click', () => {
+      state.service = svc;
+      state.time = null;
+      renderServices();
+      setTimeout(() => go('s-time'), 160);
+    });
+    grid.appendChild(btn);
+  });
+}
+
+/* ============================================================
+   24/7 TIME SLOTS (48 half-hour slots per branch)
+   ============================================================ */
+function allSlots(){
+  const out = [];
+  for(let h = 0; h < 24; h++){
+    out.push(String(h).padStart(2,'0') + ':00');
+    out.push(String(h).padStart(2,'0') + ':30');
+  }
+  return out;
+}
+
+const SLOT_GROUPS = [
+  { name:'🌙 Night (12 AM – 6 AM)',      from:0,  to:11  },
+  { name:'☀️ Morning (6 AM – 12 PM)',    from:12, to:23  },
+  { name:'🌤️ Afternoon (12 PM – 6 PM)',  from:24, to:35  },
+  { name:'🌆 Evening (6 PM – 12 AM)',    from:36, to:47  }
+];
+
+const SLOT_CAPACITY = 2;
+
+function slotBooked(branchId, date, time){
+  return db.appointments.filter(a =>
+    a.branchId === branchId && a.date === date && a.time === time && a.status !== 'cancelled'
+  ).length;
+}
+
+function renderSlots(){
+  const dateInput = $('#apptDate');
+  dateInput.min = todayISO();
+  dateInput.value = state.date || todayISO();
+  state.date = dateInput.value;
+
+  $('#timeBranchBar').innerHTML = branchBarHTML(state.branch);
+
+  const area = $('#slotArea');
+  const slots = allSlots();
+  area.innerHTML = '';
+
+  SLOT_GROUPS.forEach(grp => {
+    const box = document.createElement('div');
+    box.className = 'slot-group';
+
+    const availableInGroup = slots.slice(grp.from, grp.to + 1)
+      .filter(t => slotBooked(state.branch, state.date, t) < SLOT_CAPACITY).length;
+
+    box.innerHTML = `<h4>${grp.name} <span class="muted small" style="font-weight:600;text-transform:none;letter-spacing:0">· ${availableInGroup} free</span></h4>`;
+
+    const grid = document.createElement('div');
+    grid.className = 'slot-grid';
+
+    slots.slice(grp.from, grp.to + 1).forEach(t => {
+      const booked = slotBooked(state.branch, state.date, t);
+      const full = booked >= SLOT_CAPACITY;
+      const b = document.createElement('button');
+      b.className = 'slot' + (state.time === t ? ' selected' : '');
+      b.textContent = fmtTime(t);
+      b.disabled = full;
+      if(full) b.title = 'Slot full';
+      b.addEventListener('click', () => {
+        state.time = t;
+        renderSlots();
+        $('#toConfirm').disabled = false;
+      });
+      grid.appendChild(b);
+    });
+
+    box.appendChild(grid);
+    area.appendChild(box);
+  });
+
+  $('#toConfirm').disabled = !state.time;
+}
+
+$('#apptDate').addEventListener('change', e => {
+  state.date = e.target.value;
+  state.time = null;
+  renderSlots();
+});
+
+$('#toConfirm').addEventListener('click', () => {
+  if(!state.time) return toast('Please pick a time slot', 'err');
+  go('s-confirm');
+});
+
+/* ============================================================
+   CONFIRM
+   ============================================================ */
+function renderConfirm(){
+  const s = state.service;
+  const br = getBranch(state.branch);
+  if(!s || !br) return go('s-branch');
+
+  $('#summaryList').innerHTML = `
+    <div class="summary-row"><span>Branch</span><span>${br.flag} ${br.name}</span></div>
+    <div class="summary-row"><span>Address</span><span>${br.address}</span></div>
+    <div class="summary-row"><span>Customer</span><span>${state.user.name}</span></div>
+    <div class="summary-row"><span>Mobile</span><span>${state.user.phone}</span></div>
+    <div class="summary-row"><span>Service</span><span>${s.icon} ${s.name}</span></div>
+    <div class="summary-row"><span>Date</span><span>${fmtDate(state.date)}</span></div>
+    <div class="summary-row"><span>Time</span><span>${fmtTime(state.time)}</span></div>
+    <div class="summary-row"><span>Duration</span><span>${s.duration} minutes</span></div>
+    <div class="summary-row total-row"><span>Total payable</span><span>${money(s.price)}</span></div>
+  `;
+}
+
+$('#confirmBooking').addEventListener('click', () => {
+  const s = state.service;
+  if(!s || !state.time || !state.branch) return toast('Something went missing, please retry', 'err');
+
+  const notes = $('#reqNotes').value.trim();
+
+  const sameBranchDay = db.appointments.filter(a => a.date === state.date && a.branchId === state.branch);
+  const token = sameBranchDay.length ? Math.max(...sameBranchDay.map(a => a.token)) + 1 : 1;
+
+  const appt = {
+    _id: uid('apt'),
+    token,
+    branchId: state.branch,
+    userId: state.user._id,
+    name: state.user.name,
+    phone: state.user.phone,
+    gender: state.gender,
+    serviceId: s._id,
+    serviceName: s.name,
+    serviceIcon: s.icon,
+    price: s.price,
+    duration: s.duration,
+    date: state.date,
+    time: state.time,
+    status: 'waiting',
+    workerId: null,
+    notes: notes || '',
+    createdAt: Date.now()
+  };
+
+  db.appointments.push(appt);
+
+  if(notes){
+    db.requests.push({
+      _id: uid('req'),
+      branchId: state.branch,
+      userId: state.user._id,
+      name: state.user.name,
+      phone: state.user.phone,
+      text: notes,
+      apptId: appt._id,
+      status: 'open',
+      createdAt: Date.now()
+    });
+  }
+
+  saveDB();
+
+  state.service = null;
+  state.time = null;
+  $('#reqNotes').value = '';
+
+  toast('Booking confirmed! Your token is #' + token);
+  go('s-cust-dash');
+});
+
+/* ============================================================
+   CUSTOMER DASHBOARD
+   ============================================================ */
+function renderCustomerDash(){
+  const u = state.user;
+  if(!u) return go('s-customer-auth');
+
+  $('#custWho').textContent = u.name + ' · ' + u.phone;
+  $('#custAvatar').textContent = initials(u.name);
+
+  const mine = db.appointments
+    .filter(a => a.userId === u._id)
+    .sort((a,b) => b.createdAt - a.createdAt);
+
+  const today = todayISO();
+  const active = mine.find(a =>
+    a.date >= today && (a.status === 'waiting' || a.status === 'serving')
+  );
+
+  const box = $('#custActive');
+  if(active){
+    const info = queueInfo(active);
+    const br = getBranch(active.branchId);
+    box.innerHTML = `
+      <div class="hero-token">
+        <div class="ht-label">Your token</div>
+        <div class="ht-token">#${String(active.token).padStart(2,'0')}</div>
+        <div style="font-weight:700;font-size:15px;opacity:.95">${active.serviceIcon} ${active.serviceName}</div>
+        <div class="ht-meta">
+          <div class="ht-meta-item">
+            <div class="k">Branch</div>
+            <div class="v">${br ? br.flag + ' ' + br.city : '—'}</div>
+          </div>
+          <div class="ht-meta-item">
+            <div class="k">Status</div>
+            <div class="v">${active.status === 'serving' ? '🔴 Being served now' : '⏳ Waiting'}</div>
+          </div>
+          <div class="ht-meta-item">
+            <div class="k">Position</div>
+            <div class="v">${active.status === 'serving' ? 'It\'s your turn!' : '#' + info.position + ' in queue'}</div>
+          </div>
+          <div class="ht-meta-item">
+            <div class="k">Est. wait</div>
+            <div class="v">${active.status === 'serving' ? '—' : info.wait + ' min'}</div>
+          </div>
+          <div class="ht-meta-item">
+            <div class="k">Slot</div>
+            <div class="v">${fmtDate(active.date)} · ${fmtTime(active.time)}</div>
+          </div>
+        </div>
+      </div>`;
+  }else{
+    box.innerHTML = `
+      <div class="card" style="text-align:center">
+        <div class="empty" style="padding:22px 10px">
+          <span class="e-emoji">💤</span>
+          <h3 style="font-size:17px;color:var(--text);margin-bottom:6px">No active appointment</h3>
+          <p class="small">Book a service to get your token and live queue position.</p>
+        </div>
+      </div>`;
+  }
+
+  const completed = mine.filter(a => a.status === 'completed');
+  const spend = completed.reduce((s,a) => s + a.price, 0);
+  const branchesVisited = new Set(mine.map(a => a.branchId)).size;
+  $('#custStats').innerHTML = `
+    <div class="stat">
+      <div class="s-label">Total bookings</div>
+      <div class="s-value">${mine.length}</div>
+      <div class="s-sub">all time</div>
+    </div>
+    <div class="stat">
+      <div class="s-label">Completed</div>
+      <div class="s-value">${completed.length}</div>
+      <div class="s-sub">visits to salon</div>
+    </div>
+    <div class="stat">
+      <div class="s-label">Branches visited</div>
+      <div class="s-value">${branchesVisited}</div>
+      <div class="s-sub">across India</div>
+    </div>
+    <div class="stat">
+      <div class="s-label">Total spent</div>
+      <div class="s-value">${money(spend)}</div>
+      <div class="s-sub">lifetime</div>
+    </div>`;
+
+  const list = $('#custAppts');
+  if(!mine.length){
+    list.innerHTML = '<div class="empty"><span class="e-emoji">📭</span>No appointments yet.</div>';
+  }else{
+    list.innerHTML = mine.map(a => {
+      const br = getBranch(a.branchId);
+      return `
+        <div class="appt-item">
+          <div class="appt-emoji">${a.serviceIcon}</div>
+          <div class="appt-body">
+            <div class="t">${a.serviceName}</div>
+            <div class="m">${br ? br.flag + ' ' + br.name : ''} · ${fmtDate(a.date)} · ${fmtTime(a.time)} · Token #${a.token}</div>
+          </div>
+          <div class="appt-side">
+            <div class="appt-price">${money(a.price)}</div>
+            <div style="margin-top:6px"><span class="pill ${a.status}">${a.status}</span></div>
+          </div>
+          ${(a.status === 'waiting')
+            ? `<button class="btn btn-ghost sm" data-cancel="${a._id}">Cancel</button>`
+            : ''}
+        </div>`;
+    }).join('');
+  }
+}
+
+function queueInfo(appt){
+  const q = db.appointments
+    .filter(a => a.branchId === appt.branchId && a.date === appt.date && (a.status === 'waiting' || a.status === 'serving'))
+    .sort((x,y) => x.token - y.token);
+
+  const serving = q.find(a => a.status === 'serving') || null;
+  const ahead = q.filter(a => a.status === 'waiting' && a.token < appt.token);
+  const wait = ahead.reduce((s,a) => s + (a.duration || 30), 0);
+
+  return {
+    serving,
+    position: appt.status === 'waiting' ? ahead.length + 1 : 0,
+    wait
+  };
+}
+
+$('#custAppts').addEventListener('click', e => {
+  const btn = e.target.closest('[data-cancel]');
+  if(!btn) return;
+  const id = btn.dataset.cancel;
+  const appt = db.appointments.find(a => a._id === id);
+  if(!appt) return;
+  if(!confirm('Cancel this appointment?')) return;
+  appt.status = 'cancelled';
+  saveDB();
+  toast('Appointment cancelled');
+  renderCustomerDash();
+});
+
+$('#requestForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const text = $('#requestText').value.trim();
+  if(!text) return;
+  // pick the most relevant branch for the request
+  const activeAppt = db.appointments
+    .filter(a => a.userId === state.user._id && (a.status === 'waiting' || a.status === 'serving'))
+    .sort((x,y) => y.createdAt - x.createdAt)[0];
+
+  db.requests.push({
+    _id: uid('req'),
+    branchId: activeAppt ? activeAppt.branchId : (state.user.lastBranch || null),
+    userId: state.user._id,
+    name: state.user.name,
+    phone: state.user.phone,
+    text,
+    apptId: null,
+    status: 'open',
+    createdAt: Date.now()
+  });
+  saveDB();
+  $('#requestText').value = '';
+  toast('Request sent to the salon team ✔');
+});
+
+$('#bookAnother').addEventListener('click', () => {
+  state.service = null;
+  state.time = null;
+  go('s-service');   // keep the same branch
+});
+$('#changeBranchBtn').addEventListener('click', () => go('s-branch'));
+$('#goLanding').addEventListener('click', () => go('s-landing'));
+
+function customerLogout(){
+  state.user = null;
+  state.branch = null;
+  state.gender = null;
+  state.service = null;
+  state.time = null;
+  toast('Logged out');
+  go('s-landing');
+}
+$('#custLogout1').addEventListener('click', customerLogout);
+$('#custLogout2').addEventListener('click', customerLogout);
+$('#custLogoutB1').addEventListener('click', customerLogout);
+
+/* ============================================================
+   ADMIN LOGIN
+   ============================================================ */
+const ACCESS_CODES = { admin:'ADMIN2024', worker:'STAFF2024' };
+
+$('#adminLoginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#aName').value.trim();
+  const role = $('#aRole').value;
+  const code = $('#aCode').value.trim();
+
+  if(!role) return toast('Please select a role', 'err');
+  if(ACCESS_CODES[role] !== code) return toast('Invalid access code', 'err');
+
+  state.staff = { name, role };
+  toast('Signed in as ' + (role === 'admin' ? 'Admin' : 'Worker'));
+  go('s-admin-dash');
+});
+
+$('#adminLogout').addEventListener('click', () => {
+  state.staff = null;
+  toast('Signed out');
+  go('s-landing');
+});
+
+/* ============================================================
+   ADMIN DASHBOARD
+   ============================================================ */
+$$('.side-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $$('.side-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    $$('.tabpane').forEach(p => p.classList.remove('active'));
+    $('#tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* populate the branch selector in the topbar */
+function fillAdminBranchSelect(){
+  const sel = $('#adminBranchSel');
+  if(!sel) return;
+  sel.innerHTML = `<option value="all">🏢 All Branches (${db.branches.length})</option>` +
+    db.branches.map(b => `<option value="${b._id}">${b.flag} ${b.city} · ${b.name.replace('SalonQ ','')}</option>`).join('');
+  sel.value = state.adminBranch;
+}
+$('#adminBranchSel').addEventListener('change', e => {
+  state.adminBranch = e.target.value;
+  renderAdminAll();
+});
+
+/* filter helper */
+function adminAppointments(){
+  return db.appointments.filter(a =>
+    state.adminBranch === 'all' || a.branchId === state.adminBranch
+  );
+}
+function adminWorkers(){
+  return db.workers.filter(w =>
+    state.adminBranch === 'all' || w.branchId === state.adminBranch
+  );
+}
+function adminRequests(){
+  return db.requests.filter(r =>
+    state.adminBranch === 'all' || r.branchId === state.adminBranch
+  );
+}
+
+function renderAdminAll(){
+  const st = state.staff;
+  if(!st) return go('s-admin-auth');
+
+  $('#roleChip').textContent = st.role === 'admin' ? 'ADMIN' : 'WORKER';
+  $('#adminWho').textContent = st.name;
+  $('#adminAvatar').textContent = initials(st.name);
+
+  // workers cannot appoint new workers
+  $('#addWorkerCard').style.display = st.role === 'admin' ? '' : 'none';
+
+  fillAdminBranchSelect();
+
+  if(!$('#ovDate').value)  $('#ovDate').value  = todayISO();
+  if(!$('#apDate').value)  $('#apDate').value  = todayISO();
+
+  renderOverview();
+  renderAppointments();
+  renderCustomers();
+  renderWorkers();
+  renderServicesAdmin();
+  renderBranchesAdmin();
+  renderRequests();
+  fillSpecialtySelect();
+  fillWorkerBranchSelect();
+}
+
+/* ---------------- OVERVIEW ---------------- */
+function renderOverview(){
+  const date = $('#ovDate').value || todayISO();
+  const list = adminAppointments().filter(a => a.date === date);
+
+  const waiting   = list.filter(a => a.status === 'waiting');
+  const serving   = list.filter(a => a.status === 'serving');
+  const completed = list.filter(a => a.status === 'completed');
+  const revenue   = completed.reduce((s,a) => s + a.price, 0);
+  const openReq   = adminRequests().filter(r => r.status === 'open').length;
+
+  const branchLabel = state.adminBranch === 'all'
+    ? 'All Branches'
+    : getBranch(state.adminBranch).name;
+
+  $('#ovStats').innerHTML = `
+    <div class="stat"><div class="s-label">Appointments</div><div class="s-value">${list.length}</div><div class="s-sub">${branchLabel} · ${fmtDate(date)}</div></div>
+    <div class="stat"><div class="s-label">Waiting</div><div class="s-value" style="color:var(--warn)">${waiting.length}</div><div class="s-sub">in queue</div></div>
+    <div class="stat"><div class="s-label">Serving</div><div class="s-value" style="color:var(--info)">${serving.length}</div><div class="s-sub">right now</div></div>
+    <div class="stat"><div class="s-label">Completed</div><div class="s-value" style="color:var(--ok)">${completed.length}</div><div class="s-sub">done today</div></div>
+    <div class="stat"><div class="s-label">Revenue</div><div class="s-value">${money(revenue)}</div><div class="s-sub">from completed</div></div>
+    <div class="stat"><div class="s-label">Open requests</div><div class="s-value" style="color:var(--accent)">${openReq}</div><div class="s-sub">need attention</div></div>`;
+
+  $('#ovNowServing').innerHTML = serving.length
+    ? serving.map(a => {
+        const br = getBranch(a.branchId);
+        return `
+          <div class="queue-big" style="margin-bottom:14px">
+            <div class="queue-token">#${String(a.token).padStart(2,'0')}</div>
+            <div style="flex:1;min-width:180px">
+              <div style="font-weight:750;font-size:16px">${a.serviceIcon} ${a.serviceName}</div>
+              <div class="muted small">${a.name} · ${a.phone} · ${fmtTime(a.time)} · ${br ? br.flag + ' ' + br.city : ''}</div>
+            </div>
+            <button class="btn btn-ok sm" data-act="complete" data-id="${a._id}">✓ Mark complete</button>
+          </div>`;
+      }).join('')
+    : '<div class="empty"><span class="e-emoji">🪑</span>No one is being served right now.</div>';
+
+  $('#ovWaiting').innerHTML = waiting.length
+    ? waiting.sort((a,b)=>a.token-b.token).map(a => {
+        const br = getBranch(a.branchId);
+        return `
+          <div class="appt-item">
+            <div class="appt-emoji">#${a.token}</div>
+            <div class="appt-body">
+              <div class="t">${a.serviceIcon} ${a.serviceName}</div>
+              <div class="m">${a.name} · ${a.phone} · slot ${fmtTime(a.time)}${br ? ' · ' + br.city : ''}</div>
+            </div>
+            <div class="appt-side">
+              <span class="pill waiting">waiting</span>
+              <div style="margin-top:8px"><button class="btn btn-primary sm" data-act="start" data-id="${a._id}">▶ Start</button></div>
+            </div>
+          </div>`;
+      }).join('')
+    : '<div class="empty"><span class="e-emoji">🎉</span>Queue is empty. Nice work!</div>';
+}
+
+$('#ovRefresh').addEventListener('click', renderOverview);
+$('#ovDate').addEventListener('change', renderOverview);
+
+/* ---------------- APPOINTMENTS ---------------- */
+function renderAppointments(){
+  const date = $('#apDate').value || todayISO();
+  const status = $('#apStatus').value;
+  let list = adminAppointments().filter(a => a.date === date);
+  if(status !== 'all') list = list.filter(a => a.status === status);
+  list.sort((a,b) => a.token - b.token);
+
+  const rows = $('#apptRows');
+  if(!list.length){
+    rows.innerHTML = '<tr><td colspan="8"><div class="empty"><span class="e-emoji">📭</span>No appointments for this filter.</div></td></tr>';
+    return;
+  }
+
+  rows.innerHTML = list.map(a => {
+    const br = getBranch(a.branchId);
+    const workerOptions = ['<option value="">— assign —</option>']
+      .concat(db.workers.filter(w => w.active && (w.branchId === a.branchId || state.adminBranch === 'all')).map(w =>
+        `<option value="${w._id}" ${a.workerId === w._id ? 'selected' : ''}>${w.name} (${w.role})</option>`
+      )).join('');
+
+    const actions = [];
+    if(a.status === 'waiting')   actions.push(`<button class="btn btn-primary sm" data-act="start" data-id="${a._id}">▶ Start</button>`);
+    if(a.status === 'serving')   actions.push(`<button class="btn btn-ok sm" data-act="complete" data-id="${a._id}">✓ Complete</button>`);
+    if(a.status === 'waiting' || a.status === 'serving')
+      actions.push(`<button class="btn btn-ghost sm" data-act="cancel" data-id="${a._id}">✕</button>`);
+
+    return `
+      <tr>
+        <td><b style="font-size:15px">#${String(a.token).padStart(2,'0')}</b></td>
+        <td>
+          <div class="cell-name">${a.name}</div>
+          <div class="cell-sub">${a.phone} · ${labelGender(a.gender)}</div>
+        </td>
+        <td>
+          <div style="font-size:12.5px">${br ? br.flag + ' ' + br.city : '—'}</div>
+          <div class="cell-sub">${br ? br.name.replace('SalonQ ','') : ''}</div>
+        </td>
+        <td>
+          <div>${a.serviceIcon} ${a.serviceName}</div>
+          <div class="cell-sub">${money(a.price)} · ${a.duration} min</div>
+        </td>
+        <td>${fmtTime(a.time)}</td>
+        <td>
+          <select data-worker="${a._id}" style="background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:6px 9px;font-size:12.5px;max-width:170px">
+            ${workerOptions}
+          </select>
+        </td>
+        <td><span class="pill ${a.status}">${a.status}</span></td>
+        <td class="right"><div style="display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap">${actions.join('') || '<span class="muted small">—</span>'}</div></td>
+      </tr>`;
+  }).join('');
+}
+
+$('#apRefresh').addEventListener('click', renderAppointments);
+$('#apDate').addEventListener('change', renderAppointments);
+$('#apStatus').addEventListener('change', renderAppointments);
+
+$('#apptRows').addEventListener('change', e => {
+  const sel = e.target.closest('[data-worker]');
+  if(!sel) return;
+  const appt = db.appointments.find(a => a._id === sel.dataset.worker);
+  if(!appt) return;
+  appt.workerId = sel.value || null;
+  saveDB();
+  toast('Worker assigned');
+});
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-act]');
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const act = btn.dataset.act;
+
+  if(act === 'start' || act === 'complete' || act === 'cancel'){
+    const appt = db.appointments.find(a => a._id === id);
+    if(!appt) return;
+    if(act === 'start'){ appt.status = 'serving'; toast(`Now serving token #${appt.token}`); }
+    else if(act === 'complete'){ appt.status = 'completed'; appt.completedAt = Date.now(); toast(`Token #${appt.token} completed`); }
+    else if(act === 'cancel'){ if(!confirm('Cancel this appointment?')) return; appt.status = 'cancelled'; toast('Appointment cancelled'); }
+    saveDB();
+  }
+  else if(act === 'toggleWorker'){
+    const w = db.workers.find(x => x._id === id);
+    if(!w) return;
+    w.active = !w.active;
+    saveDB();
+    toast(w.name + (w.active ? ' is now active' : ' set to inactive'));
+  }
+  else if(act === 'removeWorker'){
+    const w = db.workers.find(x => x._id === id);
+    if(!w) return;
+    if(!confirm('Remove ' + w.name + ' from the team?')) return;
+    db.workers = db.workers.filter(x => x._id !== w._id);
+    saveDB();
+    toast('Worker removed');
+  }
+  else if(act === 'removeService'){
+    const s = db.services.find(x => x._id === id);
+    if(!s) return;
+    if(!confirm('Remove service "' + s.name + '"?')) return;
+    db.services = db.services.filter(x => x._id !== s._id);
+    saveDB();
+    toast('Service removed');
+  }
+  else if(act === 'resolveReq'){
+    const r = db.requests.find(x => x._id === id);
+    if(!r) return;
+    r.status = 'resolved';
+    saveDB();
+    toast('Request marked resolved');
+  }
+  else if(act === 'filterBranch'){
+    state.adminBranch = id;
+    fillAdminBranchSelect();
+    renderAdminAll();
+    // jump to overview tab
+    $$('.side-btn').forEach(b => b.classList.remove('active'));
+    $('.side-btn[data-tab="overview"]').classList.add('active');
+    $$('.tabpane').forEach(p => p.classList.remove('active'));
+    $('#tab-overview').classList.add('active');
+    return;
+  }
+
+  renderAdminAll();
+});
+
+/* ---------------- CUSTOMERS ---------------- */
+function renderCustomers(){
+  const q = ($('#custSearch').value || '').toLowerCase().trim();
+
+  // restrict to customers who visited the filtered branch
+  const branchAppts = adminAppointments();
+  const visibleUserIds = new Set(branchAppts.map(a => a.userId));
+
+  let users = db.users.filter(u => state.adminBranch === 'all' || visibleUserIds.has(u._id));
+  if(q) users = users.filter(u =>
+    u.name.toLowerCase().includes(q) || u.phone.includes(q)
+  );
+
+  const rows = $('#custRows');
+  if(!users.length){
+    rows.innerHTML = '<tr><td colspan="7"><div class="empty"><span class="e-emoji">👤</span>No customers found.</div></td></tr>';
+    return;
+  }
+
+  users.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+
+  rows.innerHTML = users.map(u => {
+    const mine = branchAppts.filter(a => a.userId === u._id);
+    const done = mine.filter(a => a.status === 'completed');
+    const spend = done.reduce((s,a) => s + a.price, 0);
+    const last = mine.length ? Math.max(...mine.map(a => a.createdAt)) : null;
+    const active = mine.some(a => a.status === 'waiting' || a.status === 'serving');
+    const homeBranch = getBranch(u.lastBranch);
+
+    return `
+      <tr>
+        <td>
+          <div class="cell-name">${u.name}</div>
+          <div class="cell-sub">${u.phone}</div>
+        </td>
+        <td>${labelGender(u.gender)}</td>
+        <td><b>${mine.length}</b> <span class="muted small">(${done.length} done)</span></td>
+        <td>${money(spend)}</td>
+        <td>${homeBranch ? homeBranch.flag + ' ' + homeBranch.city : '—'}</td>
+        <td>${last ? timeAgo(last) : '—'}</td>
+        <td>${active ? '<span class="pill serving">in salon</span>' : '<span class="pill completed">idle</span>'}</td>
+      </tr>`;
+  }).join('');
+}
+$('#custSearch').addEventListener('input', renderCustomers);
+
+/* ---------------- WORKERS ---------------- */
+function fillSpecialtySelect(){
+  const sel = $('#wSpec');
+  if(!sel || sel.dataset.filled) return;
+  sel.innerHTML = db.services.map(s => `<option value="${s.key}">${s.icon} ${s.name}</option>`).join('');
+  sel.dataset.filled = '1';
+}
+
+function fillWorkerBranchSelect(){
+  const sel = $('#wBranch');
+  if(!sel || sel.dataset.filled) return;
+  sel.innerHTML = db.branches.map(b =>
+    `<option value="${b._id}">${b.flag} ${b.city} · ${b.name}</option>`
+  ).join('');
+  // preselect current filter branch
+  if(state.adminBranch !== 'all') sel.value = state.adminBranch;
+  sel.dataset.filled = '1';
+}
+
+function renderWorkers(){
+  const list = $('#workerList');
+  const workers = adminWorkers();
+  $('#workerCount').textContent = workers.length;
+
+  if(!workers.length){
+    list.innerHTML = '<div class="empty"><span class="e-emoji">🧑‍🔧</span>No workers for this branch.</div>';
+    return;
+  }
+
+  const isAdmin = state.staff && state.staff.role === 'admin';
+
+  list.innerHTML = workers.map(w => {
+    const svc = db.services.find(s => s.key === w.specialty);
+    const jobs = db.appointments.filter(a => a.workerId === w._id && a.status === 'completed').length;
+    const br = getBranch(w.branchId);
+
+    return `
+      <div class="mini-card">
+        <div class="mini-avatar">${initials(w.name)}</div>
+        <div class="mini-body">
+          <div class="n">${w.name}</div>
+          <div class="d">${w.role} · ${w.phone}</div>
+          <div class="d">${br ? br.flag + ' ' + br.city : ''} · ${svc ? svc.icon + ' ' + svc.name : 'General'} · ${jobs} jobs</div>
+          <div class="mini-actions">
+            <span class="pill ${w.active ? 'completed' : 'cancelled'}">${w.active ? 'active' : 'inactive'}</span>
+            ${isAdmin ? `
+              <button class="btn btn-ghost sm" data-act="toggleWorker" data-id="${w._id}">${w.active ? 'Set inactive' : 'Set active'}</button>
+              <button class="btn btn-ghost sm" data-act="removeWorker" data-id="${w._id}">Remove</button>
+            ` : ''}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+$('#workerForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name  = $('#wName').value.trim();
+  const phone = $('#wPhone').value.trim();
+  const role  = $('#wRole').value;
+  const spec  = $('#wSpec').value;
+  const branchId = $('#wBranch').value;
+
+  if(!/^[0-9]{10}$/.test(phone)) return toast('Enter a valid 10-digit phone', 'err');
+  if(!branchId) return toast('Pick a branch', 'err');
+
+  db.workers.push({
+    _id: uid('wrk'),
+    branchId,
+    name, phone, role,
+    specialty: spec,
+    active: true,
+    joined: Date.now()
+  });
+  saveDB();
+  e.target.reset();
+  fillWorkerBranchSelect();
+  toast(name + ' appointed at ' + getBranch(branchId).city + ' ✔');
+  renderWorkers();
+  renderBranchesAdmin();
+});
+
+/* ---------------- SERVICES ---------------- */
+function renderServicesAdmin(){
+  const list = $('#serviceList');
+  list.innerHTML = db.services.map(s => `
+    <div class="mini-card">
+      <div class="mini-avatar" style="font-size:19px">${s.icon}</div>
+      <div class="mini-body">
+        <div class="n">${s.name}</div>
+        <div class="d">${money(s.price)} · ${s.duration} min</div>
+        <div class="d">${
+          s.genders.length === 3 ? 'Unisex' :
+          s.genders[0] === 'female' ? 'Women only' : 'Men only'
+        }</div>
+        <div class="mini-actions">
+          <button class="btn btn-ghost sm" data-act="removeService" data-id="${s._id}">Remove</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+$('#serviceForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#svcName').value.trim();
+  const price = Number($('#svcPrice').value);
+  const duration = Number($('#svcDuration').value);
+  const g = $('#svcGender').value;
+
+  const genders = g === 'all' ? ['male','female','other'] : (g === 'male' ? ['male','other'] : ['female']);
+
+  db.services.push({
+    _id: uid('svc'),
+    key: name.toLowerCase().replace(/[^a-z0-9]+/g,'_'),
+    name,
+    icon: '✨',
+    price, duration,
+    genders,
+    desc: 'Newly added service'
+  });
+  saveDB();
+  e.target.reset();
+  $('#svcPrice').value = 300;
+  $('#svcDuration').value = 30;
+  $('#wSpec').dataset.filled = '';
+  fillSpecialtySelect();
+  toast('Service added ✔');
+  renderServicesAdmin();
+});
+
+/* ---------------- BRANCHES TAB (NEW) ---------------- */
+function renderBranchesAdmin(){
+  $('#branchCount').textContent = db.branches.length;
+  const grid = $('#adminBranchGrid');
+  grid.innerHTML = '';
+
+  db.branches.forEach(br => {
+    const staff = db.workers.filter(w => w.branchId === br._id).length;
+    const appts = db.appointments.filter(a => a.branchId === br._id).length;
+    const todayAppts = db.appointments.filter(a => a.branchId === br._id && a.date === todayISO()).length;
+
+    const card = document.createElement('button');
+    card.className = 'branch-card' + (state.adminBranch === br._id ? ' selected' : '');
+    card.innerHTML = `
+      <span class="branch-city"><span class="branch-flag">${br.flag}</span> ${br.city}</span>
+      <span class="branch-name">${br.name}</span>
+      <span class="branch-addr">📍 ${br.address}</span>
+      <span class="branch-addr">📞 ${br.phone}</span>
+      <span class="branch-meta">
+        <span class="branch-chip open">● Open 24/7</span>
+        <span class="branch-chip">${staff} staff</span>
+        <span class="branch-chip">${todayAppts} today</span>
+        <span class="branch-chip">${appts} total</span>
+      </span>`;
+    card.addEventListener('click', () => {
+      state.adminBranch = state.adminBranch === br._id ? 'all' : br._id;
+      fillAdminBranchSelect();
+      renderAdminAll();
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ---------------- REQUESTS ---------------- */
+function renderRequests(){
+  const reqs = adminRequests().slice().sort((a,b) => b.createdAt - a.createdAt);
+  const open = reqs.filter(r => r.status === 'open').length;
+  $('#reqCount').textContent = open + ' open';
+
+  const box = $('#requestList');
+  if(!reqs.length){
+    box.innerHTML = '<div class="empty"><span class="e-emoji">📭</span>No customer requests yet.</div>';
+    return;
+  }
+
+  box.innerHTML = reqs.map(r => {
+    const appt = r.apptId ? db.appointments.find(a => a._id === r.apptId) : null;
+    const br = getBranch(r.branchId);
+    return `
+      <div class="appt-item">
+        <div class="appt-emoji">${initials(r.name)}</div>
+        <div class="appt-body">
+          <div class="t">${r.name} <span class="muted small">· ${r.phone}</span></div>
+          <div class="m" style="margin-top:4px;color:var(--text);font-size:13.5px">"${r.text}"</div>
+          <div class="m">${br ? br.flag + ' ' + br.city + ' · ' : ''}${timeAgo(r.createdAt)}${appt ? ' · for ' + appt.serviceName + ' @ ' + fmtTime(appt.time) : ''}</div>
+        </div>
+        <div class="appt-side">
+          <span class="pill ${r.status}">${r.status}</span>
+          ${r.status === 'open'
+            ? `<div style="margin-top:8px"><button class="btn btn-ok sm" data-act="resolveReq" data-id="${r._id}">✓ Resolve</button></div>`
+            : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+loadDB();
+$('#apptDate').value = todayISO();
+console.log('%cSalonQ ready ✂️ · 10 branches · 24/7', 'color:#a855f7;font-weight:bold;font-size:14px');
+</script>
+</body>
+</html> 
